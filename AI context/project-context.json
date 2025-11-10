@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "generatedAt": "2025-10-29T00:00:00Z",
+    "repo": "Chess-App",
+    "branch": "main",
+    "framework": "Angular",
+    "angular": {
+      "version": "^20.3.0",
+      "cli": "^20.3.5"
+    },
+    "typescript": "~5.9.2"
+  },
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test"
+  },
+  "structure": {
+    "rootFiles": [
+      "angular.json",
+      "package.json",
+      "README.md",
+      "RESPONSIVE_QUICKSTART.md",
+      "tsconfig.json",
+      "tsconfig.app.json",
+      "tsconfig.spec.json"
+    ],
+    "public": "public/**/*",
+    "src": {
+      "index.html": "Entry HTML",
+      "main.ts": "Angular bootstrap (standalone app)",
+      "styles": [
+        "src/styles.css",
+        "src/styles/ui.css",
+        "src/styles/responsive.css",
+        "src/styles/RESPONSIVE_GUIDE.md"
+      ],
+      "appShell": [
+        "src/app/app.ts",
+        "src/app/app.html",
+        "src/app/app.css",
+        "src/app/app.routes.ts",
+        "src/app/app.config.ts",
+        "src/app/app.spec.ts"
+      ],
+      "features": {
+        "coordinates": [
+          "src/app/coordinates/coordinates.ts",
+          "src/app/coordinates/coordinates.html",
+          "src/app/coordinates/coordinates.css"
+        ],
+        "dominance": [
+          "src/app/dominance/dominance.ts",
+          "src/app/dominance/dominance.html",
+          "src/app/dominance/dominance.css",
+          "src/app/dominance/team-dominance.ts",
+          "src/app/dominance/team-dominance.html",
+          "src/app/dominance/team-dominance.css"
+        ],
+        "independence": {
+          "hub": [
+            "src/app/independents/independents.ts",
+            "src/app/independents/independents.html",
+            "src/app/independents/independents.css"
+          ],
+          "components": {
+            "all-pieces": [
+              "src/app/independence-components/all-pieces/all-pieces.ts",
+              "src/app/independence-components/all-pieces/all-pieces.html",
+              "src/app/independence-components/all-pieces/all-pieces.css"
+            ],
+            "bishops": [
+              "src/app/independence-components/bishops/bishops.ts",
+              "src/app/independence-components/bishops/bishops.html",
+              "src/app/independence-components/bishops/bishops.css"
+            ],
+            "rooks": [
+              "src/app/independence-components/rooks/rooks.ts",
+              "src/app/independence-components/rooks/rooks.html",
+              "src/app/independence-components/rooks/rooks.css"
+            ],
+            "kings": [
+              "src/app/independence-components/kings/kings.ts",
+              "src/app/independence-components/kings/kings.html",
+              "src/app/independence-components/kings/kings.css"
+            ],
+            "knights": [
+              "src/app/independence-components/knights/knights.ts",
+              "src/app/independence-components/knights/knights.html",
+              "src/app/independence-components/knights/knights.css"
+            ],
+            "pawns": [
+              "src/app/independence-components/pawns/pawns.ts",
+              "src/app/independence-components/pawns/pawns.html",
+              "src/app/independence-components/pawns/pawns.css"
+            ],
+            "eight-queens": [
+              "src/app/independence-components/eight-queens/eight-queens.ts",
+              "src/app/independence-components/eight-queens/eight-queens.html",
+              "src/app/independence-components/eight-queens/eight-queens.css"
+            ]
+          }
+        },
+        "puzzles": [
+          "src/app/puzzles/puzzles.ts",
+          "src/app/puzzles/puzzles.html",
+          "src/app/puzzles/puzzles.css"
+        ],
+        "shared": [
+          "src/app/shared/chess.constants.ts",
+          "src/app/shared/responsive.service.ts",
+          "src/app/shared/responsive-example.component.ts",
+          "src/app/shared/README.md"
+        ]
+      }
+    }
+  },
+  "models": [
+    {
+      "name": "dominance",
+      "status": "pending",
+      "notes": "Team mode integrated into Dominance component as a mode; separate legacy team-dominance component still present. Awaiting approval to generate per-file detailed context."
+    },
+    {
+      "name": "independence",
+      "status": "pending",
+      "notes": "Independents hub with per-piece independence variants (bishops, rooks, knights, kings, pawns, all-pieces, eight-queens)."
+    },
+    {
+      "name": "coordinates",
+      "status": "pending",
+      "notes": "Coordinates trainer."
+    },
+    {
+      "name": "puzzles",
+      "status": "pending",
+      "notes": "Puzzles landing/collection."
+    },
+    {
+      "name": "shared",
+      "status": "pending",
+      "notes": "Utilities and constants, including chess piece symbols and responsive helpers."
+    },
+    {
+      "name": "app-shell",
+      "status": "pending",
+      "notes": "App bootstrap, routes, and layout."
+    }
+  ],
+  "fileContexts": [
+    { "path": "src/main.ts", "status": "pending" },
+    { "path": "src/index.html", "status": "pending" },
+    { "path": "src/styles.css", "status": "pending" },
+    { "path": "src/styles/ui.css", "status": "pending" },
+    { "path": "src/styles/responsive.css", "status": "pending" },
+    { "path": "src/styles/RESPONSIVE_GUIDE.md", "status": "pending" },
+    { "path": "src/app/app.ts", "status": "pending" },
+    { "path": "src/app/app.html", "status": "pending" },
+    { "path": "src/app/app.css", "status": "pending" },
+    { "path": "src/app/app.routes.ts", "status": "pending" },
+    { "path": "src/app/app.config.ts", "status": "pending" },
+    { "path": "src/app/app.spec.ts", "status": "pending" },
+    { "path": "src/app/coordinates/coordinates.ts", "status": "pending" },
+    { "path": "src/app/coordinates/coordinates.html", "status": "pending" },
+    { "path": "src/app/coordinates/coordinates.css", "status": "pending" },
+    { "path": "src/app/dominance/dominance.ts", "status": "pending" },
+    { "path": "src/app/dominance/dominance.html", "status": "pending" },
+    { "path": "src/app/dominance/dominance.css", "status": "pending" },
+    { "path": "src/app/dominance/team-dominance.ts", "status": "pending" },
+    { "path": "src/app/dominance/team-dominance.html", "status": "pending" },
+    { "path": "src/app/dominance/team-dominance.css", "status": "pending" },
+    { "path": "src/app/independents/independents.ts", "status": "pending" },
+    { "path": "src/app/independents/independents.html", "status": "pending" },
+    { "path": "src/app/independents/independents.css", "status": "pending" },
+    { "path": "src/app/independence-components/all-pieces/all-pieces.ts", "status": "pending" },
+    { "path": "src/app/independence-components/all-pieces/all-pieces.html", "status": "pending" },
+    { "path": "src/app/independence-components/all-pieces/all-pieces.css", "status": "pending" },
+    { "path": "src/app/independence-components/bishops/bishops.ts", "status": "pending" },
+    { "path": "src/app/independence-components/bishops/bishops.html", "status": "pending" },
+    { "path": "src/app/independence-components/bishops/bishops.css", "status": "pending" },
+    { "path": "src/app/independence-components/rooks/rooks.ts", "status": "pending" },
+    { "path": "src/app/independence-components/rooks/rooks.html", "status": "pending" },
+    { "path": "src/app/independence-components/rooks/rooks.css", "status": "pending" },
+    { "path": "src/app/independence-components/kings/kings.ts", "status": "pending" },
+    { "path": "src/app/independence-components/kings/kings.html", "status": "pending" },
+    { "path": "src/app/independence-components/kings/kings.css", "status": "pending" },
+    { "path": "src/app/independence-components/knights/knights.ts", "status": "pending" },
+    { "path": "src/app/independence-components/knights/knights.html", "status": "pending" },
+    { "path": "src/app/independence-components/knights/knights.css", "status": "pending" },
+    { "path": "src/app/independence-components/pawns/pawns.ts", "status": "pending" },
+    { "path": "src/app/independence-components/pawns/pawns.html", "status": "pending" },
+    { "path": "src/app/independence-components/pawns/pawns.css", "status": "pending" },
+    { "path": "src/app/independence-components/eight-queens/eight-queens.ts", "status": "pending" },
+    { "path": "src/app/independence-components/eight-queens/eight-queens.html", "status": "pending" },
+    { "path": "src/app/independence-components/eight-queens/eight-queens.css", "status": "pending" },
+    { "path": "src/app/puzzles/puzzles.ts", "status": "pending" },
+    { "path": "src/app/puzzles/puzzles.html", "status": "pending" },
+    { "path": "src/app/puzzles/puzzles.css", "status": "pending" },
+    { "path": "src/app/shared/chess.constants.ts", "status": "pending" },
+    { "path": "src/app/shared/responsive.service.ts", "status": "pending" },
+    { "path": "src/app/shared/responsive-example.component.ts", "status": "pending" },
+    { "path": "src/app/shared/README.md", "status": "pending" }
+  ],
+  "notes": [
+    "This file is a living index. We'll fill per-file contexts model-by-model after your go-ahead.",
+    "Team Dominance is implemented as a mode in dominance.ts; legacy team-dominance component remains present (can be removed later).",
+    "Responsive system lives under src/styles and shared service, with guides at RESPONSI... GUIDEs."
+  ]
+}

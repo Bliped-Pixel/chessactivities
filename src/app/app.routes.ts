@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadComponent: () => import('./coordinates/coordinates').then(m => m.Coordinates)
     },
     {
+        path: 'knights-tour',
+        loadComponent: () => import('./knights-tour/knights-tour').then(m => m.KnightsTour)
+    },
+    {
         path: '',
         redirectTo: 'puzzles',
         pathMatch: 'full'

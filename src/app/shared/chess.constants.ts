@@ -45,7 +45,7 @@ export function getPiecePluralName(type: PieceType): string {
 
 // Board coordinate helper functions
 export function fileLabel(index: number): string {
-  return String.fromCharCode(65 + index); // A-H
+  return String.fromCharCode(97 + index); // a-h
 }
 
 export function rankLabel(boardSize: number, row: number): number {

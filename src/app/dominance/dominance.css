@@ -81,6 +81,38 @@
   gap: 20px;
 }
 
+/* Mode toggle (segmented control) */
+.mode-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.mode-toggle .mode-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.mode-toggle .mode-btn:hover {
+  background: #f3f4f6;
+}
+
+.mode-toggle .mode-btn.active {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
 .piece-selector h3,
 .stats-panel h3 {
   font-size: 1.2em;
@@ -314,7 +346,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(251, 191, 36, 0.4);
+  /* Changed dominated highlight from yellow to red */
+  background: rgba(239, 68, 68, 0.35);
   pointer-events: none;
   z-index: 1;
 }

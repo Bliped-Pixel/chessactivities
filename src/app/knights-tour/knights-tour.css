@@ -1,0 +1,199 @@
+/* Knight's Tour CSS */
+.knights-tour-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.game-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.game-header p {
+  font-size: 1.2em;
+  opacity: 0.95;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.message-bar {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.info {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid #c7d2fe;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.warning {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 2px solid #fde68a;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.game-content {
+  display: flex;
+  gap: 32px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  max-width: 1200px;
+}
+
+.left-panel {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stats-panel,
+.info-panel {
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.stats-panel h3,
+.info-panel h3 {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.info-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-panel li {
+  padding: 6px 0;
+  color: #6b7280;
+  font-size: 0.95em;
+}
+
+.info-panel li::before {
+  content: "→ ";
+  color: #667eea;
+  font-weight: bold;
+}
+
+.board-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Knight's Tour specific cell styles */
+.cell {
+  cursor: pointer;
+  position: relative;
+}
+
+.cell.visited {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.cell.knight {
+  background: #667eea !important;
+}
+
+/* Color-adaptive highlighting for valid moves */
+.cell.valid-move.white {
+  position: relative;
+}
+
+.cell.valid-move.white::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(34, 197, 94, 0.4); /* Green overlay, darker for light squares */
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse-valid 1.5s ease-in-out infinite;
+}
+
+.cell.valid-move.black {
+  position: relative;
+}
+
+.cell.valid-move.black::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(134, 239, 172, 0.5); /* Green overlay, lighter for dark squares */
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse-valid 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-valid {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.cell.visited:not(.knight):hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.knight-piece {
+  font-size: 2.5em;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  pointer-events: none;
+  z-index: 2;
+  position: relative;
+}
+
+.visit-order {
+  position: absolute;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cell.white .visit-order {
+  color: #8b6b3f;
+}
+
+.cell.black .visit-order {
+  color: #f0d9b5;
+}

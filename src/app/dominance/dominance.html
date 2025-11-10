@@ -3,17 +3,26 @@
     <h1>Games of Dominance</h1>
     <p>Arrange pieces so that all 64 squares are controlled. The pieces can meet each other.</p>
     <div class="message-bar">
-      <div *ngIf="mode==='single' && hasWon && isOptimal" class="victory optimal">
-        🎉 Perfect! Puzzle solved with all squares controlled!
-      </div>
-      <div *ngIf="mode==='single' && hasWon && !isOptimal" class="victory">
-        ✓ All squares controlled! But check your piece count.
-      </div>
-      <div *ngIf="mode==='team' && hasWon" class="victory">🎉 All squares controlled — you win!</div>
+      <ng-container *ngIf="mode === 'single'">
+        <div *ngIf="hasWon && isOptimal" class="victory optimal">
+          🎉 Perfect! Puzzle solved with all squares controlled!
+        </div>
+        <div *ngIf="hasWon && !isOptimal" class="victory">
+          ✓ All squares controlled! But check your piece count.
+        </div>
+      </ng-container>
+      <ng-container *ngIf="mode === 'team'">
+        <div *ngIf="hasWon" class="victory optimal">
+          🎉 Team Dominance solved! All squares controlled with the 8 powers.
+        </div>
+        <div *ngIf="!hasWon && dominationPercentage === 100" class="victory">
+          ✓ All squares controlled, but the counts must be exactly King×1, Queen×1, Rooks×2, Bishops×2, Knights×2.
+        </div>
+      </ng-container>
     </div>
   </div>
 
-  <div class="size-controls">
+  <div class="size-controls" *ngIf="mode !== 'team'">
     <label>Board Size:</label>
     <button *ngFor="let s of availableSizes" 
             [class.active]="size === s"
@@ -24,14 +33,10 @@
 
   <div class="game-content">
     <div class="left-panel">
-      <div class="piece-selector">
-        <h3>Mode</h3>
-        <div class="team-buttons">
-          <button class="team-btn" [class.active]="mode==='single'" (click)="setMode('single')">Single</button>
-          <button class="team-btn" [class.active]="mode==='team'" (click)="setMode('team')">Team</button>
-        </div>
+      <div class="mode-toggle" aria-label="Choose dominance mode">
+        <button class="mode-btn" [class.active]="mode === 'single'" (click)="setMode('single')">Single</button>
+        <button class="mode-btn" [class.active]="mode === 'team'" (click)="setMode('team')">Team</button>
       </div>
-
       <div class="piece-selector">
         <h3>Select Piece</h3>
         <div class="piece-buttons">
@@ -42,8 +47,9 @@
             (click)="selectPiece(piece.type)"
             [title]="piece.name">
             <span class="piece-symbol">{{ piece.symbol }}</span>
-            <span class="piece-count" *ngIf="mode==='single'">{{ getPieceCount(piece.type) }} / {{ getRequiredPieces(piece.type) }}</span>
-            <span class="piece-count" *ngIf="mode==='team'">{{ getTeamPieceCount(piece.type) }}</span>
+            <span class="piece-count">
+              {{ getPieceCount(piece.type) }} / {{ getRequiredPieces(piece.type) }}
+            </span>
           </button>
         </div>
       </div>
@@ -74,11 +80,9 @@
           <div class="progress-fill" [style.width.%]="dominationPercentage"></div>
         </div>
       </div>
-
-      
     </div>
 
-    <div class="board-container" *ngIf="mode==='single'">
+    <div class="board-container">
       <div class="board-with-ledger">
         <div class="corner top-left"></div>
         <div class="coord-row top" [style.grid-template-columns]="'repeat(' + size + ', 52px)'">
@@ -115,48 +119,6 @@
         <div class="corner bottom-left"></div>
         <div class="coord-row bottom" [style.grid-template-columns]="'repeat(' + size + ', 52px)'">
           <div class="coord-item" *ngFor="let _ of board[0]; let c = index"
-               [class.white]="((size - 1) + c) % 2 === 0" [class.black]="((size - 1) + c) % 2 === 1">{{ fileLabel(c) }}</div>
-        </div>
-        <div class="corner bottom-right"></div>
-      </div>
-    </div>
-
-    <div class="board-container" *ngIf="mode==='team'">
-      <div class="board-with-ledger">
-        <div class="corner top-left"></div>
-        <div class="coord-row top" [style.grid-template-columns]="'repeat(' + size + ', 52px)'">
-          <div class="coord-item" *ngFor="let _ of teamBoard[0]; let c = index"
-               [class.white]="(0 + c) % 2 === 0" [class.black]="(0 + c) % 2 === 1">{{ fileLabel(c) }}</div>
-        </div>
-        <div class="corner top-right"></div>
-
-        <div class="coord-col left" [style.grid-template-rows]="'repeat(' + size + ', 52px)'">
-          <div class="coord-item" *ngFor="let _ of teamBoard; let r = index"
-               [class.white]="(r + 0) % 2 === 0" [class.black]="(r + 0) % 2 === 1">{{ rankLabel(r) }}</div>
-        </div>
-
-        <div class="chessboard" [style.grid-template-columns]="'repeat(' + size + ', 52px)'">
-          <div *ngFor="let row of teamBoard; let r = index" class="row">
-            <div *ngFor="let cell of row; let c = index"
-              class="cell"
-              [class.white]="(r + c) % 2 === 0"
-              [class.black]="(r + c) % 2 === 1"
-              [class.dominated]="highlightDominated && isDominated(r, c) && !teamBoard[r][c]"
-              [class.has-piece]="teamBoard[r][c]"
-              (click)="placeOrRemoveTeamPiece(r, c)">
-              <span *ngIf="teamBoard[r][c] as p" class="piece" [ngClass]="getTeamClass(p.team)">{{ getPieceSymbol(p.type) }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="coord-col right" [style.grid-template-rows]="'repeat(' + size + ', 52px)'">
-          <div class="coord-item" *ngFor="let _ of teamBoard; let r = index"
-               [class.white]="(r + (size - 1)) % 2 === 0" [class.black]="(r + (size - 1)) % 2 === 1">{{ rankLabel(r) }}</div>
-        </div>
-
-        <div class="corner bottom-left"></div>
-        <div class="coord-row bottom" [style.grid-template-columns]="'repeat(' + size + ', 52px)'">
-          <div class="coord-item" *ngFor="let _ of teamBoard[0]; let c = index"
                [class.white]="((size - 1) + c) % 2 === 0" [class.black]="((size - 1) + c) % 2 === 1">{{ fileLabel(c) }}</div>
         </div>
         <div class="corner bottom-right"></div>

@@ -32,7 +32,7 @@ export class Coordinates implements OnDestroy {
     if (this.timerId) clearInterval(this.timerId);
   }
 
-  fileLabel(index: number): string { return String.fromCharCode(97 + index).toUpperCase(); }
+  fileLabel(index: number): string { return String.fromCharCode(97 + index); }
   rankLabel(row: number): number { return this.size - row; }
 
   toCoord(r: number, c: number): string {

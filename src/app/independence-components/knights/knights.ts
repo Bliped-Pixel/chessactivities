@@ -16,7 +16,7 @@ export class Knights implements OnChanges {
   validKnightsPlaced = 0;
   highlightPath = false;
 
-  fileLabel(index: number): string { return String.fromCharCode(97 + index).toUpperCase(); }
+  fileLabel(index: number): string { return String.fromCharCode(97 + index); }
   rankLabel(row: number): number { return this.size - row; }
 
   get threatenedSquares(): boolean[][] {

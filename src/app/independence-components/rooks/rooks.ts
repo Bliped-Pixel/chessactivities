@@ -16,7 +16,7 @@ export class Rooks implements OnChanges {
   validRooksPlaced = 0;
   highlightPath = false;
 
-  fileLabel(index: number): string { return String.fromCharCode(97 + index).toUpperCase(); }
+  fileLabel(index: number): string { return String.fromCharCode(97 + index); }
   rankLabel(row: number): number { return this.size - row; }
 
   get threatenedSquares(): boolean[][] {

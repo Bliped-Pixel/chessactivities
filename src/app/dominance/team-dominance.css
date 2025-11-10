@@ -1,0 +1,9 @@
+/* Placeholder CSS for removed Team Dominance view. */
+.removed-placeholder {
+  padding: 24px;
+  text-align: center;
+  color: #374151;
+  background: #f8fafc;
+  border: 1px dashed #e5e7eb;
+  border-radius: 8px;
+}
