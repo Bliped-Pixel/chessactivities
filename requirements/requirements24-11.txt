@@ -4,3 +4,4 @@
 4) The chess quizzes must be adaptive meaning based on the user's performance the difficulty level should change
 5) I have the quiz questions in an excel sheet I should be able to import the an excel sheet in set format that will automatically add to the pool of questions, my sheet will contain the questions along with answers and the difficulty 
 6) Create an admin panel where I can upload and manage the quiz questions, view user performance and analytics
+7) Create a professional login and sign up system 

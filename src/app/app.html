@@ -1,20 +1,38 @@
 <div class="container">
-	<div class="navbar" [class.closed]="navbarClosed">
-		<button class="toggle-btn" (click)="navbarClosed = !navbarClosed">
-			{{ navbarClosed ? '☰' : '✖' }}
-		</button>
-		<div class="nav-content" *ngIf="!navbarClosed">
+	<div class="navbar">
+		<div class="nav-content">
 			<h3>♔ Chess Activities</h3>
+			
+			<!-- User Info -->
+			<div class="user-info" *ngIf="authService.currentUser() && authService.userProfile()">
+				<div class="user-avatar">
+					{{ authService.userProfile()!.displayName.charAt(0).toUpperCase() }}
+				</div>
+				<div class="user-details">
+					<p class="user-name">{{ authService.userProfile()!.displayName }}</p>
+					<span class="user-role" [class.admin]="authService.isAdmin()">
+						{{ authService.isAdmin() ? '👑 Admin' : '👤 User' }}
+					</span>
+				</div>
+			</div>
+
 			<ul>
 				<li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-				<li><a routerLink="/dominance" routerLinkActive="active">Dominance</a></li>
-				<li><a routerLink="/independents" routerLinkActive="active">Independence</a></li>
-				<li><a routerLink="/coordinates" routerLinkActive="active">Coordinates</a></li>
-				<li><a routerLink="/knights-tour" routerLinkActive="active">Knight's Tour</a></li>
-				<li><a routerLink="/quiz" routerLinkActive="active">Quiz</a></li>
 				<li><a routerLink="/puzzles" routerLinkActive="active">Puzzles</a></li>
-				<li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+				<li *ngIf="authService.isAuthenticated()"><a routerLink="/quiz" routerLinkActive="active">Quiz</a></li>
+				<li *ngIf="authService.isAdmin()"><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
 			</ul>
+
+			<!-- Auth Buttons -->
+			<div class="auth-buttons">
+				<ng-container *ngIf="!authService.isAuthenticated()">
+					<a routerLink="/login" class="btn-auth btn-login">Login</a>
+					<a routerLink="/signup" class="btn-auth btn-signup">Sign Up</a>
+				</ng-container>
+				<ng-container *ngIf="authService.isAuthenticated()">
+					<button (click)="logout()" class="btn-auth btn-logout">Logout</button>
+				</ng-container>
+			</div>
 		</div>
 	</div>
 	<div class="main-content">

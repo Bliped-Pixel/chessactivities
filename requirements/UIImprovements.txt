@@ -1,0 +1,54 @@
+# UI/UX Improvements Log
+
+## Date: November 30, 2025
+
+### Navigation Changes
+
+#### Change 1: Simplified Navigation Bar
+**Date**: November 30, 2025
+**Location**: `src/app/app.html`
+**Description**: Removed individual game links from main navigation. Games are now accessed through the Puzzles page.
+
+**Before**:
+- Home
+- Dominance
+- Independence  
+- Coordinates
+- Knight's Tour
+- Quiz
+- Puzzles
+- Admin
+
+**After**:
+- Home
+- Puzzles (hub for all games)
+- Quiz (logged in users only)
+- Admin (admins only)
+
+**Rationale**: Cleaner navigation, less clutter, better organization
+
+---
+
+### CSS Improvements
+
+#### Change 2: Fixed Navbar Positioning & Auth Button Spacing
+**Date**: November 30, 2025
+**Location**: `src/app/app.css`
+**Description**: 
+1. Removed gap at top of page - navbar now sits flush at ceiling
+2. Increased spacing between Login and Sign Up buttons
+
+**CSS Changes**:
+- Added universal selector `*` to reset margin/padding
+- Set `body, html` with explicit height and no margin
+- Increased auth-buttons gap from `8px` to `12px`
+
+**Result**: Navbar touches top of viewport, better visual separation between auth buttons
+
+---
+
+## Pending CSS Improvements
+
+*(Additional changes will be documented below as they are made)*
+
+---

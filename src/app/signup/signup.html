@@ -1,0 +1,110 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-header">
+      <h1>♟️ Join Chess Activities</h1>
+      <p>Create your account and start learning</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="signup-form">
+      <!-- Error Message -->
+      <div *ngIf="errorMessage()" class="alert alert-error">
+        {{ errorMessage() }}
+      </div>
+
+      <!-- Display Name Field -->
+      <div class="form-group">
+        <label for="displayName">Full Name</label>
+        <input
+          type="text"
+          id="displayName"
+          [value]="displayName()"
+          (input)="displayName.set($any($event.target).value)"
+          placeholder="Enter your full name"
+          class="input-field"
+          required
+          autocomplete="name">
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          [value]="email()"
+          (input)="email.set($any($event.target).value)"
+          placeholder="Enter your email"
+          class="input-field"
+          required
+          autocomplete="email">
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input-wrapper">
+          <input
+            [type]="showPassword() ? 'text' : 'password'"
+            id="password"
+            [value]="password()"
+            (input)="password.set($any($event.target).value)"
+            placeholder="Create a password (min 6 characters)"
+            class="input-field"
+            required
+            autocomplete="new-password">
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="togglePasswordVisibility()"
+            [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'">
+            {{ showPassword() ? '👁️' : '👁️‍🗨️' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-input-wrapper">
+          <input
+            [type]="showConfirmPassword() ? 'text' : 'password'"
+            id="confirmPassword"
+            [value]="confirmPassword()"
+            (input)="confirmPassword.set($any($event.target).value)"
+            placeholder="Confirm your password"
+            class="input-field"
+            required
+            autocomplete="new-password">
+          <button
+            type="button"
+            class="toggle-password"
+            (click)="toggleConfirmPasswordVisibility()"
+            [attr.aria-label]="showConfirmPassword() ? 'Hide password' : 'Show password'">
+            {{ showConfirmPassword() ? '👁️' : '👁️‍🗨️' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="isLoading()">
+        <span *ngIf="!isLoading()">Create Account</span>
+        <span *ngIf="isLoading()">Creating account...</span>
+      </button>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>Already have an account?</span>
+      </div>
+
+      <!-- Login Link -->
+      <div class="login-link">
+        <a routerLink="/login" class="btn btn-secondary btn-block">
+          Sign In Instead
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

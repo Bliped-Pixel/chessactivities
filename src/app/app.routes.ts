@@ -1,9 +1,20 @@
 import { Routes } from '@angular/router';
+import { authGuard, adminGuard, guestGuard } from './guards/auth.guards';
 
 export const routes: Routes = [
     {
         path: '',
         loadComponent: () => import('./home/home').then(m => m.Home)
+    },
+    {
+        path: 'login',
+        loadComponent: () => import('./login/login').then(m => m.Login),
+        canActivate: [guestGuard]
+    },
+    {
+        path: 'signup',
+        loadComponent: () => import('./signup/signup').then(m => m.Signup),
+        canActivate: [guestGuard]
     },
     {
         path: 'puzzles',
@@ -27,10 +38,12 @@ export const routes: Routes = [
     },
     {
         path: 'quiz',
-        loadComponent: () => import('./quiz/quiz').then(m => m.Quiz)
+        loadComponent: () => import('./quiz/quiz').then(m => m.Quiz),
+        canActivate: [authGuard]
     },
     {
         path: 'admin',
-        loadComponent: () => import('./admin/admin').then(m => m.Admin)
+        loadComponent: () => import('./admin/admin').then(m => m.Admin),
+        canActivate: [adminGuard]
     }
 ];
